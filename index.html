@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Simulador de parcelamento - Vue.js</title>
+        <link rel="stylesheet" href="style.css">
+
+        <!-- development version, includes helpful console warnings -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app" class="container">
+            <div class="row">
+                <label>Digite um valor para simular</label>
+                <input autocomplete="off" maxlength="10" type="text" v-model="valor" @keyup="simular"/>
+
+                <div>{{aviso}}</div>
+
+                <table v-if="linhas.length > 0">
+                    <tr>
+                        <th>Parcelas</th>
+                        <th>Valor da parcela</th>
+                        <th>Valor total</th>
+                    </tr>
+                    
+                    <tr v-for="item in linhas">
+                        <td scope="row">{{ item.parcelas }}x</td>
+                        <td>{{moeda}} {{ item.valor_parcela }}</td>
+                        <td>{{moeda}} {{ item.valor_total }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <script src="index.js" type="text/javascript"></script>
+    </body>
+</html>
